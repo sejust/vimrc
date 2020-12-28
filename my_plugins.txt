@@ -1,0 +1,8 @@
+my_plugins/YouCompleteMe
+my_plugins/tagbar
+my_plugins/taglist.vim
+my_plugins/vim-go
+my_plugins/vim-lua-indent
+my_plugins/vim-protobuf
+my_plugins/vim-rainbow
+my_plugins/wxapp.vim
