@@ -90,7 +90,7 @@ set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 
 " Ignore case when searching
-set ignorecase
+"set ignorecase
 
 " When searching try to be smart about cases
 set smartcase
@@ -219,6 +219,7 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
+map <C-w> <C-W>w
 
 " Close the current buffer
 map <leader>bd :Bclose<cr>:tabclose<cr>gT

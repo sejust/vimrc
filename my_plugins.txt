@@ -1,0 +1,12 @@
+my_plugins/YouCompleteMe
+my_plugins/rust.vim
+my_plugins/tabline.vim
+my_plugins/tagbar
+my_plugins/taglist.vim
+my_plugins/vim-airline
+my_plugins/vim-go
+my_plugins/vim-lua-indent
+my_plugins/vim-protobuf
+my_plugins/vim-racer
+my_plugins/vim-rainbow
+my_plugins/wxapp.vim
