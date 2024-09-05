@@ -1,4 +1,5 @@
 my_plugins/YouCompleteMe
+my_plugins/coc.nvim
 my_plugins/rust.vim
 my_plugins/tabline.vim
 my_plugins/tagbar
