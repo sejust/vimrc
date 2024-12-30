@@ -26,8 +26,8 @@ if exists('+colorcolumn')
   highlight ColorColumn ctermbg=black guibg=#00005f
 endif
 
-autocmd FileType c set noexpandtab
-autocmd FileType cpp set noexpandtab
+" autocmd FileType c set noexpandtab
+" autocmd FileType cpp set noexpandtab
 
 " highlight (:hi)
 " see more: https://yianwillis.github.io/vimcdoc/doc/syntax.html#:highlight
@@ -59,7 +59,7 @@ hi Keyword term=standout cterm=bold ctermfg=118 gui=bold guifg=springgreen
 hi Identifier term=underline ctermfg=DarkCyan guifg=#89fb98
 hi Statement term=bold cterm=bold ctermfg=220 gui=bold guifg=#f0e68c
 hi Function term=underline cterm=bold ctermfg=12 guifg=#89fb98
-hi Exception term=standout cterm=underline ctermfg=1 guifg=salmon
+hi Exception term=standout cterm=bold ctermfg=1 guifg=salmon
 hi Todo term=standout ctermfg=0 ctermbg=5 guifg=#ff0000 guibg=#eeee00
 hi SpecialKey ctermfg=239 guifg=#9acd32
 hi IncSearch term=reverse ctermfg=186 ctermbg=37 guifg=#f0e68c guibg=#cd853f
@@ -77,7 +77,7 @@ let g:systype=system('uname -s')
 
 nnoremap <TAB> :tabnext <cr>
 
-au FileType json set foldmethod=indent
+" au FileType json set foldmethod=indent
 autocmd FileType ansible set filetype=yaml
 
 " coc.vim
@@ -119,6 +119,7 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nmap <silent> \d <Plug>(coc-references)
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call ShowDocumentation()<CR>
@@ -188,7 +189,6 @@ let g:go_metalinter_enabled = ['deadcode', 'gosimple', 'govet', 'ineffassign', '
 let g:go_metalinter_deadline = "60s"
 let g:go_gopls_options = ['-remote=auto']
 
-
 au FileType go nmap \f :GoFmt<CR>
 au FileType go nmap \l :GoMetaLinter<CR>
 " au FileType go nmap \a :GoBuildTags ''<CR>
@@ -211,6 +211,33 @@ au FileType go nmap <Leader>gd <Plug>(go-doc)
 au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
 
 
+" https://github.com/rhysd/vim-clang-format
+let g:clang_format#command = "clang-format"
+let g:clang_format#git = "git"
+let g:clang_format#code_style = "google"
+let g:clang_format#auto_format = 0
+" $ clang-format -dump-config
+let g:clang_format#style_options = {
+            \ "AccessModifierOffset" : -4,
+            \ "AlignOperands" : "Align",
+            \ "AllowShortBlocksOnASingleLine" : "Empty",
+            \ "AllowShortCaseLabelsOnASingleLine" : "true",
+            \ "AllowShortFunctionsOnASingleLine" : "Inline",
+            \ "AllowShortIfStatementsOnASingleLine" : "true",
+            \ "AlwaysBreakTemplateDeclarations" : "true",
+            \ "ColumnLimit" : 120,
+            \ "TabWidth" : 4,
+            \ "Standard" : "c++17"}
+
+" map to \f in C++ code
+autocmd FileType c,cpp,objc nnoremap <buffer>\f :<C-u>ClangFormat<CR>
+autocmd FileType c,cpp,objc vnoremap <buffer>\f :ClangFormat<CR>
+" if you install vim-operator-user
+" autocmd FileType c,cpp,objc nnoremap <buffer>\f <Plug>(operator-clang-format)
+" Toggle auto formatting:
+autocmd FileType c,cpp,objc nnoremap <Leader>C :ClangFormatAutoToggle<CR>
+
+
 " rust
 let g:rust_clip_command = 'pbcopy'
 let g:cargo_shell_command_runner = '!'
@@ -224,8 +251,8 @@ au FileType rust nmap \b :Cbuild<CR>
 au FileType rust nmap \t :Ctest<CR>
 au FileType rust nmap \c :Cclean<CR>
 
-au FileType rust nmap gd <Plug>(rust-def)
-au FileType rust nmap <Leader>gd <Plug>(rust-doc)
+" au FileType rust nmap gd <Plug>(rust-def)
+" au FileType rust nmap <Leader>gd <Plug>(rust-doc)
 
 
 " python
@@ -291,9 +318,9 @@ let g:tagbar_type_go = {
     \ 'ctagsargs' : '-sort -silent'
 \ }
 
-xmap \\ <Plug>Commentary
-nmap \\ <Plug>Commentary
-omap \\ <Plug>Commentary
+xnoremap \\ <Plug>Commentary
+nnoremap \\ <Plug>Commentary
+onoremap \\ <Plug>Commentary
 
 " Select tab page
 nnoremap <leader>1 1gt
@@ -359,3 +386,10 @@ vnoremap <leader>aa :s/$/$$/
 
 " Grep word under cursor in directory
 nnoremap !s :! grep <c-r><c-w> *
+
+nnoremap <silent> <leader>ll :set wrap! <cr>
+
+" Move left 1/2 a screen, replace `Scroll up one line`
+nnoremap <silent> <c-e> :execute "normal! " . (winwidth(0)/2) . "l"<CR>
+" Move right 1/2 a screen, replace `Scroll down one line`
+nnoremap <silent> <c-y> :execute "normal! " . (winwidth(0)/2) . "h"<CR>
