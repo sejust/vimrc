@@ -1,13 +1,16 @@
 my_plugins/YouCompleteMe
-my_plugins/coc.nvim
-my_plugins/rust.vim
-my_plugins/tabline.vim
-my_plugins/tagbar
-my_plugins/taglist.vim
-my_plugins/vim-airline
-my_plugins/vim-go
+my_plugins/coc.nvim                 github.com/neoclide/coc.nvim
+my_plugins/papercolor-theme         github.com/NLKNguyen/papercolor-theme
+my_plugins/rust.vim                 github.com/rust-lang/rust.vim
+my_plugins/tabline.vim              github.com/mkitt/tabline.vim
+my_plugins/tagbar                   github.com/preservim/tagbar
+my_plugins/taglist.vim              github.com/vim-scripts/taglist.vim
+my_plugins/vim-airline              github.com/vim-airline/vim-airline
+my_plugins/vim-go                   github.com/fatih/vim-go
+my_plugins/vim-clang-format         github.com/rhysd/vim-clang-format
+my_plugins/vim-operator-user        github.com/kana/vim-operator-user
 my_plugins/vim-lua-indent
-my_plugins/vim-protobuf
-my_plugins/vim-racer
-my_plugins/vim-rainbow
+my_plugins/vim-protobuf             github.com/uarun/vim-protobuf
+my_plugins/vim-racer                github.com/racer-rust/vim-racer
+my_plugins/vim-rainbow              github.com/frazrepo/vim-rainbow
 my_plugins/wxapp.vim
